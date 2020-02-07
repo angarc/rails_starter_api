@@ -1,0 +1,8 @@
+class Create<%= file_name.pluralize.titleize.gsub(' ', '') %> < ActiveRecord::Migration[6.0]
+  def change
+    create_table :<%= file_name.pluralize.underscore %> do |t|
+      t.string :name
+      t.timestamps
+    end
+  end
+end

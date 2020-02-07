@@ -1,0 +1,1 @@
+json.<%= file_name.pluralize.underscore %> @<%= file_name.pluralize.underscore %>

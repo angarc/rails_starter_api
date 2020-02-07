@@ -1,0 +1,17 @@
+module Api
+  module V1
+    class <%= file_name.pluralize.titleize.gsub(' ', '') %>Controller < ElementsController 
+    
+      def element 
+        <%= file_name.camelcase %>
+      end
+
+      private
+       
+        def element_params
+          raise "Not implemented"
+        end
+
+    end
+  end
+end
