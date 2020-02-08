@@ -4,12 +4,14 @@ class ElementGenerator < Rails::Generators::NamedBase
 
   def create_files 
     template "element_controller.template", "app/controllers/api/v1/#{file_name.pluralize.underscore}_controller.rb" 
-    # template "show.template", "app/views/api/v1/#{file_name.pluralize.underscore}/show.json.jbuilder"
-    # template "index.template", "app/views/api/v1/#{file_name.pluralize.underscore}/index.json.jbuilder"
-    # template "destroy.template", "app/views/api/v1/#{file_name.pluralize.underscore}/destroy.json.jbuilder"
-    # template "update.template", "app/views/api/v1/#{file_name.pluralize.underscore}/update.json.jbuilder"
-    # template "create.template", "app/views/api/v1/#{file_name.pluralize.underscore}/create.json.jbuilder"
-    template "model.template", "app/models/#{file_name.singularize.underscore}.rb"
+    if Rails.configuration.starter_api[:generate_views_for_elements] 
+      template "show.template", "app/views/api/v1/#{file_name.pluralize.underscore}/show.json.jbuilder"
+      template "index.template", "app/views/api/v1/#{file_name.pluralize.underscore}/index.json.jbuilder"
+      template "destroy.template", "app/views/api/v1/#{file_name.pluralize.underscore}/destroy.json.jbuilder"
+      template "update.template", "app/views/api/v1/#{file_name.pluralize.underscore}/update.json.jbuilder"
+      template "create.template", "app/views/api/v1/#{file_name.pluralize.underscore}/create.json.jbuilder"
+      template "model.template", "app/models/#{file_name.singularize.underscore}.rb"
+    end
   end
 
   def create_migration_file
